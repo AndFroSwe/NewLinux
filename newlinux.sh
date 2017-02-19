@@ -20,8 +20,9 @@ VIM="lua5.2 python python3 vim-gnome"
 GIT="git"
 PYTHON="python python3 python-pip"
 MUPDF="mupdf xdotool"
+SSH="ssh"
 # Combine all apps into one command
-ALL="$VIM $GIT $PYTHON $MUPDF"
+ALL="$VIM $GIT $PYTHON $MUPDF $SSH"
 
 # Git options
 GITNAME="andfroswe"
