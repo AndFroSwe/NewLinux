@@ -51,6 +51,8 @@ sudo apt-get install -y $ALL
 echo "Setting up Git..."
 git config --global user.name $GITNAME
 git config --global user.email $GITMAIL
+# To cache git password
+git config --global credential.helper cache
 
 # Setup vim and vimrc
 echo "Setting up vim..."
