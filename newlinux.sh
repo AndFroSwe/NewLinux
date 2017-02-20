@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Script for installing essentials on a clean Unix computer
+# Also adds settings to .bashrc
 ########################
 # Usage:
 # $chmod u+x newcomp.sh
@@ -21,8 +22,9 @@ GIT="git"
 PYTHON="python python3 python-pip"
 MUPDF="mupdf xdotool"
 SSH="ssh"
+CTAGS="exuberant-ctags"
 # Combine all apps into one command
-ALL="$VIM $GIT $PYTHON $MUPDF $SSH"
+ALL="$VIM $GIT $PYTHON $MUPDF $SSH $CTAGS"
 
 # Git options
 GITNAME="andfroswe"
@@ -67,4 +69,10 @@ cd fonts
 cd $HOME
 rm fonts -rf
 
+# Add settings to .bashrc
+echo "Adding settings to .bashrc..."
+echo "# Git" >> ~/.bashrc
+echo "function Gclone { git clone https://github.com/andfroswe/$1; }" >> ~/.bashrc
+
+# Done!
 echo "Done, terminating..."
