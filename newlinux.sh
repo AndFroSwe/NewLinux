@@ -23,8 +23,9 @@ PYTHON="python python3 python-pip"
 MUPDF="mupdf xdotool"
 SSH="ssh"
 CTAGS="exuberant-ctags"
+UTILS="gddrescue"
 # Combine all apps into one command
-ALL="$VIM $GIT $PYTHON $MUPDF $SSH $CTAGS"
+ALL="$VIM $GIT $PYTHON $MUPDF $SSH $CTAGS $UTILS"
 
 # Git options
 GITNAME="andfroswe"
@@ -41,7 +42,7 @@ echo "Starting clean download script..."
 echo "Updating repos..."
 sudo apt-get update > /dev/null
 echo "Upgrading..."
-sudo apt-get upgrade > /dev/null
+sudo apt-get upgrade
 
 # Install programs
 echo "Installing apps... $ALL"
