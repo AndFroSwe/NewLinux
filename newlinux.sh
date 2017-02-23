@@ -75,7 +75,7 @@ rm fonts -rf
 # Add settings to .bashrc
 echo "Adding settings to .bashrc..."
 echo "# Git" >> ~/.bashrc
-echo "function Gclone { git clone https://github.com/andfroswe/$1; }" >> ~/.bashrc
+echo "function Gclone { git clone https://github.com/andfroswe/\$1; }" >> ~/.bashrc
 
 # Done!
 echo "Done, terminating..."
