@@ -23,7 +23,7 @@ PYTHON="python python3 python-pip"
 MUPDF="mupdf xdotool"
 SSH="ssh"
 CTAGS="exuberant-ctags"
-UTILS="gddrescue"
+UTILS="gddrescue xclip"
 # Combine all apps into one command
 ALL="$VIM $GIT $PYTHON $MUPDF $SSH $CTAGS $UTILS"
 
