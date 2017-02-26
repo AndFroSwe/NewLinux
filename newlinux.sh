@@ -31,6 +31,8 @@ utils_install=1 # Install some minor utility programs
 texlive_install=0 # Install and build texlive from source
 ros_install=0 # Install Robot Operating System
 
+# Useful globals
+MYREPO="https://github.com/andfroswe/" # Base of my git repo
 ##################################
 # Functions
 ##################################
@@ -97,6 +99,12 @@ run_all_installs() {
         echo "******** Installing powerline fonts from git... **********"
         install_powerline_fonts
     fi
+    # Setup vim environment- Requires git
+    if [[ $git_install == 1 && $vim_install == 1 ]]; then
+        echo "******** Setting up vim... **********"
+	vim_config
+    fi
+:
     # Install texlive if chosen
     if [[ $texlive_install == 1 ]]; then 
         echo "******** Installing texlive... **********"
@@ -137,7 +145,6 @@ git_config() {
     echo "Git config"
     local GITNAME="andfroswe"
     local GITMAIL="gummianka88@gmail.com"
-    local MYREPO="https://github.com/andfroswe/" # Base of my git repo
     echo "Setting up Git..."
     git config --global user.name $GITNAME
     git config --global user.email $GITMAIL
@@ -176,7 +183,15 @@ install_ros() {
     echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
     apt-get install python-rosinstall
 }
-
+vim_config() {
+	cd ~
+	# Get the source files from my git
+	git clone "${MYREPO}vimcore"
+	git clone "${MYREPO}vimplugs"
+	# Source both files from folders
+	echo "source ~/vimcore/.vimrc" > ~/.vimrc
+	echo "source ~/vimplugs/.vimrc" >> ~/.vimrc
+}
 ### User interface loop ###
 while true
 do
