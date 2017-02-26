@@ -64,7 +64,6 @@ show_menu() {
     echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
     echo "~~~ New linux install helper ~~~"
     echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-    echo "Remember to run as SUDO!"
     echo "1) Vim: "$vim_install
     echo "2) Vim with GUI: "$vim_gui
     echo "3) Python: "$python_install
@@ -82,13 +81,13 @@ show_menu() {
 run_all_installs() {
     echo "******** Starting installs... **********"
     echo "******** Upgdating repos...   **********"
-    apt-get update
+    sudo apt-get update
     echo "******** Upgrading ...        **********"
-    apt-get upgrade
+    sudo apt-get upgrade
     echo "******** Installing from apt-get ...        **********"
     install_programs
     echo "******** Installs: $ALL_PROGRAMS *********"
-    apt-get install $ALL_PROGRAMS
+    sudo apt-get install $ALL_PROGRAMS
     # If git was installed, configure it
     if [[ $git_install == 1 ]]; then
     echo "******** Configuring git....        **********"
@@ -174,14 +173,14 @@ install_texlive() {
 }
 # Download and install ROS
 install_ros() {
-    sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-    apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
-    apt-get update
-    apt-get install ros-kinetic-desktop-full
-    rosdep init
+    sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+    sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
+    sudo apt-get update
+    sudo apt-get install ros-kinetic-desktop-full
+    sudo rosdep init
     rosdep update
     echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
-    apt-get install python-rosinstall
+    sudo apt-get install python-rosinstall
 }
 vim_config() {
 	cd ~

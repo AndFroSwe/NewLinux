@@ -1,6 +1,6 @@
 # NewLinux
 Script for setting up a my environment for a clean Linux distro
-Current latest release: v2.0
+Current latest release: v2.1
 
 ## What it does
 This is a bash script that can be run on a clean linux distro to download and set up 
@@ -11,8 +11,8 @@ Run the following in the terminal. This requires curl but can also be done with
 wget, though the downloading and unzipping needs to be done separately.
 
     $ curl -L https://github.com/andfroswe/newlinux/archive/[latest release].tar.gz | tar zx
-    $ chmod u+x newlinux.sh
-    $ sudo ./newlinux.sh
+    $ chmod 755 newlinux.sh
+    $ ./newlinux.sh
     Use GUI options to get the necessary programs and installs.
 
 It should download all necessary files and programs via apt-get. It also adds 
@@ -31,4 +31,15 @@ As of this version, the following changes can be made to the system:
     - Texlive latex package (install script must be run manually afterwards)
     - Robot Operating System, ROS. Kinetic version, check compatibility with OS
 
+# Revision history
 
+## v1.0
+Prototype that has fixed install script that has to be changed in the script
+file before run.
+
+## v2.0
+Has a configurable GUI that lets the user choose which packages are installed.
+
+## v2.1
+Changed so that script should not be run as sudo since this causes installs to
+go into the wrong home directory.
