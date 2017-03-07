@@ -17,7 +17,7 @@ CTAGS="exuberant-ctags"
 UTILS="gddrescue xclip"
 TEXLIVE_ADDR="http://ftp.acc.umu.se/mirror/CTAN/systems/texlive/tlnet/" # Address to texlive download
 TEXLIVE_FILENAME="install-tl-unx.tar.gz" # Address to texlive download
-
+POWERLINE="https://github.com/powerline/fonts"
 
 # Install variables. 1 means that it will be installed
 # Change defaults here
