@@ -31,6 +31,10 @@ As of this version, the following changes can be made to the system:
     - Texlive latex package (install script must be run manually afterwards)
     - Robot Operating System, ROS. Kinetic version, check compatibility with OS
 
+# Todos
+
+    - TODO: Add taskwarrior to utils and add download of task file and config
+
 # Revision history
 
 ## v1.0
