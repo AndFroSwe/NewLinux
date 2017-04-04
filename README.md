@@ -26,7 +26,7 @@ As of this version, the following changes can be made to the system:
     - Python programming language
     - Git code revisioning (including automatic config and a Gclone function in bash)
     - Mupdf lightweight PDF reading (also used with Vimtex)
-    - Utils package: DDRescue, Ctags, XClip
+    - Utils package: DDRescue, Ctags, XClip, TMux
     - Powerline fonts package
     - Texlive latex package (install script must be run manually afterwards)
     - Robot Operating System, ROS. Kinetic version, check compatibility with OS
@@ -47,3 +47,6 @@ Has a configurable GUI that lets the user choose which packages are installed.
 ## v2.1
 Changed so that script should not be run as sudo since this causes installs to
 go into the wrong home directory.
+
+## v2.2
+Added TMux to utils and fixed a bug where Powerline fonts would not install.

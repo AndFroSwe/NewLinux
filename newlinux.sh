@@ -1,5 +1,13 @@
 #!/bin/bash
-# 
+##################################
+# File: newlinux.sh
+# Author: andfro
+# Desciption:
+# Install script for setting up a new linux ubuntu machine.
+# The script relies on apt-get to get apps. Some choices
+# only work if git is chosen for install too, regardless 
+# whether or not git is installed on the system.
+#################################
 
 ##################################
 # Variables
@@ -14,7 +22,7 @@ PYTHON="python python3 python-pip"
 MUPDF="mupdf xdotool"
 SSH="ssh"
 CTAGS="exuberant-ctags"
-UTILS="gddrescue xclip"
+UTILS="gddrescue xclip tmux"
 TEXLIVE_ADDR="http://ftp.acc.umu.se/mirror/CTAN/systems/texlive/tlnet/" # Address to texlive download
 TEXLIVE_FILENAME="install-tl-unx.tar.gz" # Address to texlive download
 POWERLINE="https://github.com/powerline/fonts"
@@ -69,7 +77,7 @@ show_menu() {
     echo "3) Python: "$python_install
     echo "4) Git: "$git_install
     echo "5) MuPDF and XDO: "$mupdf_install
-    echo "6) Utils: ddrescue, ctags, xclip: "$utils_install
+    echo "6) Utils: ddrescue, ctags, xclip, tmux: "$utils_install
     echo "7) Powerline fonts: "$powerline_install
     echo "8) Texlive: "$texlive_install
     echo "9) ROS: "$ros_install
@@ -83,11 +91,11 @@ run_all_installs() {
     echo "******** Upgdating repos...   **********"
     sudo apt-get update
     echo "******** Upgrading ...        **********"
-    sudo apt-get upgrade
+    sudo apt-get upgrade -y
     echo "******** Installing from apt-get ...        **********"
     install_programs
     echo "******** Installs: $ALL_PROGRAMS *********"
-    sudo apt-get install $ALL_PROGRAMS
+    sudo apt-get install $ALL_PROGRAMS -y
     # If git was installed, configure it
     if [[ $git_install == 1 ]]; then
     echo "******** Configuring git....        **********"
@@ -176,11 +184,11 @@ install_ros() {
     sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
     sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116
     sudo apt-get update
-    sudo apt-get install ros-kinetic-desktop-full
+    sudo apt-get install ros-kinetic-desktop-full -y
     sudo rosdep init
     rosdep update
     echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
-    sudo apt-get install python-rosinstall
+    sudo apt-get install python-rosinstall -y
 }
 vim_config() {
 	cd ~
