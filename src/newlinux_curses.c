@@ -24,6 +24,7 @@
 void installVim(bool gui);
 void installGit();
 void configGit();
+void installProgrammingTools();
 
 // System command strings
 const char install[] = "sudo apt install -y ";
@@ -31,6 +32,8 @@ const char install[] = "sudo apt install -y ";
 const char s_vim_no_gui[] = "vim-nox";
 const char s_vim_gui[] = "vim-gnome";
 const char s_git[] = "git";
+const char s_python[] = "python python3 python-pip";
+const char s_ptools[] = "exuberant-ctags ";
 
 // These two have to be synced with each other for indexing to work
 // Last enum is the number of enums
@@ -38,12 +41,14 @@ typedef enum Programs {
     vim,
     vim_gui,
     git,
+    program_tools,
     NO_PROGRAMS
 } programs;
 
 char *choices[] = {
     "vim",
     "vim_gui",
+    "programming_tools",
     "git"
 };
 
@@ -115,6 +120,11 @@ int main(int argc, char *argv[])
                     {
                         installVim(item_value(items[vim_gui]));
                     }
+                    // Install programming tools
+                    if (item_value(items[program_tools]) == TRUE)
+                    {
+                        installProgrammingTools();
+                    }
 
                     printf("******** Done! *********\n");
                     printf("********* Press q to quit ***********\n");
@@ -142,7 +152,7 @@ int main(int argc, char *argv[])
 // Install scripts
 void installVim(bool gui)
 {
-    char *s; // Temporary strung
+    char *s; // Temporary string
     strcpy(s, install); // Copy install string into s
 
     // Install vim dependencies
@@ -161,7 +171,7 @@ void installVim(bool gui)
 
 void installGit()
 {
-    char *s; // Temporary strung
+    char *s = ""; // Temporary strung
     strcpy(s, install); // Copy install string into s
     printf("****** Installing git *******\n");
     system(strcat(s, s_git));
@@ -173,4 +183,15 @@ void configGit()
     char s[] = "git config --global  "; // Temporary strung
     system(strcat(s, "user.name andfroswe"));
     system(strcat(s, "user.email gummianka88@gmail.com"));
+}
+
+void installProgrammingTools()
+{
+    printf("****** Installing python ********\n");
+    char *s = ""; // Temporary string
+    strcpy(s, install); // Copy install string into s
+    system(strcat(s, s_python));
+    s = "";
+    printf("****** Installing programming tools ********\n");
+    system(strcat(s, s_ptools));
 }
